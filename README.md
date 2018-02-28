@@ -1,10 +1,12 @@
 # HTTPS-checker
 
-This repository checks scholarly publishers and preprint archives for their HTTP(S) status. 
+This repository checks scholarly publishers and preprint archives for their HTTP(S) status. Upon initial full version it will be ported to the [Liberate Science](https://github.com/libscie) organization account.
 
 ## The risk
 
 When websites are HTTP, they do encrypt the traffic. That way, anyway who gets in between can change content (a Man In The Middle; or MITM) without the user realizing. On the flipside, any content the user inputs (say: passwords) are unsecured and can be eavesdropped by anyone. BOOOOO! 😠
+
+![Science Magazine does not have HTTPS!](assets/http-example.png)
 
 ## The progress
 
@@ -20,10 +22,11 @@ We try to do as little manually as possible, because we're lazy and because we m
 
 Our pipeline is as follows:
 
-- Collect prefix locations of DOIs in CrossRef and DataCite 
-- Resolve these prefixes to their domain
-- Check whether the domain is HTTPS by default, allows HTTP, or has HTTPS when forced
+- [Collect prefixes](scripts/collect-prefixes.js) of DOIs in [CrossRef](https://github.com/CrossRef/rest-api-doc) and [DataCite](https://support.datacite.org/docs/api)
+- [Resolve prefixes](scripts/resolve-prefixes.js) to their domain
+- [Check whether the domain is HTTPS by default, allows HTTP, or has HTTPS when forced](scripts/https-checker.js)
 - Rerun this simple check daily and log it in a public, CC 0 Public Domain Dedicated database
+  - Setting up a simple AWS image for this
 - Showcase all this glorious data in a front-end for anyone to track their favorited or most hated publisher(s)
 
 ## The status
