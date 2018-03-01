@@ -24,7 +24,7 @@ Our pipeline is as follows:
 
 - [Collect prefixes](scripts/collect-prefixes.js) of DOIs in [CrossRef](https://github.com/CrossRef/rest-api-doc) and [DataCite](https://support.datacite.org/docs/api)
 - [Resolve prefixes](scripts/resolve-prefixes.js) to their domain
-- [Check whether the domain is HTTPS by default, allows HTTP, or has HTTPS when forced](scripts/https-checker.js)
+- [Check whether the domain is HTTPS by default, allows HTTP, or has HTTPS when forced](https://github.com/dhs-ncats/pshtt)
 - Rerun this simple check daily and log it in a public, CC 0 Public Domain Dedicated database
   - Setting up a simple AWS image for this
 - Showcase all this glorious data in a front-end for anyone to track their favorited or most hated publisher(s)
