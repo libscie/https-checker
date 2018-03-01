@@ -4,7 +4,7 @@ This repository checks scholarly publishers and preprint archives for their HTTP
 
 ## The risk
 
-When websites are HTTP, they do encrypt the traffic. That way, anyway who gets in between can change content (a Man In The Middle; or MITM) without the user realizing. On the flipside, any content the user inputs (say: passwords) are unsecured and can be eavesdropped by anyone. BOOOOO! 😠
+When websites are HTTP, they do not encrypt the traffic. That way, anyway who gets in between can change content (a Man In The Middle; or MITM) without the user realizing. On the flipside, any content the user inputs (say: passwords) are unsecured and can be eavesdropped by anyone. BOOOOO! 😠
 
 ![Science Magazine does not have HTTPS!](assets/http-example.png)
 
