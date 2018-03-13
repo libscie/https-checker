@@ -22,13 +22,12 @@ We try to do as little manually as possible, because we're lazy and because we m
 
 Our pipeline is as follows:
 
-- [Collect prefixes](scripts/collect-prefixes.js) of DOIs in [CrossRef](https://github.com/CrossRef/rest-api-doc) and [DataCite](https://support.datacite.org/docs/api)
-- [Resolve prefixes](scripts/resolve-prefixes.js) to their domain
-- [Check whether the domain is HTTPS by default, allows HTTP, or has HTTPS when forced](https://github.com/dhs-ncats/pshtt)
-- Rerun this simple check daily and log it in a public, CC 0 Public Domain Dedicated database
-  - Setting up a simple AWS image for this
+- [Collect members](scripts/collect-prefixes.js) of [CrossRef](https://github.com/CrossRef/rest-api-doc) and [DataCite](https://support.datacite.org/docs/api)
+- [Match members to a URL](scripts/resolve-prefixes.js) (see issue #2)
+- [Check whether the domain is HTTPS by default, allows HTTP, or has HTTPS when forced](https://github.com/dhs-ncats/pshtt) (see also issue #1)
+- Rerun this simple check daily and log it in a public, CC 0 Public Domain Dedicated database 
 - Showcase all this glorious data in a front-end for anyone to track their favorited or most hated publisher(s)
 
 ## The status
 
-This project just started. So this is it.
+This project just started. So this is it. Upon exploring this further, it seems that the success of this project will be related to that of the [`doi-tracking`](https://github.com/chartgerink/doi-tracking) project, because resolving prefixes to URLs is not so straightforward after all...
