@@ -4,7 +4,7 @@ base='https://api.crossref.org/members'
 ID='mailto=info@libscie.org'
 YYYY=2017
 RESULTS=`curl "${base}?rows=0&${ID}" | jq '.["message"]["total-results"]'`
-echo "publisher,doi-checked,force-https" > db/https-summary.csv
+echo "member-id,publisher,prefix,pubs-since-2017,doi-checked,force-https" > db/https-summary.csv
 
 for ((i=1; i<=RESULTS; i++)); 
 do
@@ -12,7 +12,9 @@ do
   if [[ ${MMBR} != 'Resource not found.' ]]; then
     mkdir -p db/members/${i}
     PUB=`echo $MMBR | jq '.["message"]["items"][]["publisher"]' | tail -n 1`
+    PREFIX=`echo $MMBR | jq '.["message"]["items"][]["prefix"]' | tail -n 1`
     DOI=`echo $MMBR | jq '.["message"]["items"][]["DOI"]' | tail -n 1`
+    RES=`echo $MMBR | jq '.["message"]["total-results"]'`
     
     # run pshtt for sampled link
     pshtt --json doi.org/${DOI//'"'/''} | jq '.[]' > db/members/${i}/data.json
@@ -22,17 +24,19 @@ do
       pshtt --json ${URL//'"'/''} | jq '.[]' > db/members/${i}/data.json
     fi
   
-    HTTPS=`cat db/members/${i}/data.json | jq '.["Domain Enforces HTTPS"]'`
+    HTTPS=`cat db/members/${i}/data.json | jq '.["Defaults to HTTPS"]'`
     
     if [[ $MMBR =~ .*total-results\":0.* ]]
       then
-      echo "Taking a rest."
+      echo ${i},null,null,0,null,null >> db/https-summary.csv
     else
-      echo ${PUB},${DOI},${HTTPS} >> db/https-summary.csv
-      echo "**************************************"
-      echo "Collected information for member #${i}"
-      echo "**************************************"
+      echo ${i},${PUB},${PREFIX},${RES},${DOI},${HTTPS} >> db/https-summary.csv
     fi
+    echo "**************************************"
+    echo "Collected information for member #${i}"
+    echo "**************************************"
+  else
+    echo ${i},null,null,null,null,null >> db/https-summary.csv
   fi
 done
 
