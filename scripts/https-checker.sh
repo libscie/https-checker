@@ -6,7 +6,7 @@ YYYY=2017
 RESULTS=`curl "${base}?rows=0&${ID}" | jq '.["message"]["total-results"]'`
 echo "member-id,publisher,prefix,pubs-since-2017,doi-checked,force-https" > db/https-summary.csv
 
-for ((i=1; i<=RESULTS; i++)); 
+for i in `cat db/member-ids`; 
 do
   MMBR=`curl ${base}/${i}/works?filter=from-pub-date:${YYYY}&sample=1`
   if [[ ${MMBR} != 'Resource not found.' ]]; then
