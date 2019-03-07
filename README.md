@@ -39,3 +39,7 @@ pip install pshtt --user
 ## Code of conduct
 
 This project is released with a [Contributor Code of Conduct](CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms. We welcome you with open arms if you are mindful and respectful of differences. You might not always understand another person's perspective; acknowledging that other people's feelings or perspectives are valid regardless of your understanding is prerequisite number one to being both mindful and respectful. We will not consider contributions if they are not done in a respectful manner, no matter how "genius" they might be.
+
+## Coverage
+
+[![opensource.com](https://opensource.com/sites/all/themes/opensource/logo.svg)](https://opensource.com/article/18/5/scholarly-publishers-https)
