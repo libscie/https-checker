@@ -42,4 +42,4 @@ This project is released with a [Contributor Code of Conduct](CODE_OF_CONDUCT.md
 
 ## Coverage
 
-[![opensource.com](https://opensource.com/sites/all/themes/opensource/logo.svg)](https://opensource.com/article/18/5/scholarly-publishers-https)
+[![opensource.com](./assets/opensource.png)](https://opensource.com/article/18/5/scholarly-publishers-https)
